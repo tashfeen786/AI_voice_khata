@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Trust Green palette - HSL */
+    --background: 100 25% 97%;        /* #f7faf7 */
+    --foreground: 158 80% 11%;        /* deep emerald ink */
+
+    --card: 0 0% 100%;
+    --card-foreground: 158 80% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 158 80% 11%;
+
+    --primary: 160 84% 39%;           /* #10b981 */
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 152 76% 60%;
+    --primary-deep: 158 80% 15%;      /* near #064e3b */
+
+    --secondary: 145 35% 93%;         /* #e8f3ec */
+    --secondary-foreground: 158 80% 15%;
+
+    --muted: 145 25% 95%;
+    --muted-foreground: 158 15% 40%;
+
+    --accent: 152 60% 92%;
+    --accent-foreground: 158 80% 15%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 95% 50%;
+    --warning-foreground: 30 80% 15%;
+    --danger: 0 78% 55%;
+    --danger-foreground: 0 0% 100%;
+    --info: 200 90% 45%;
+
+    --destructive: 0 78% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 145 25% 88%;
+    --input: 145 25% 88%;
+    --ring: 160 84% 39%;
+
+    --radius: 1rem;
+
+    /* Gradients & shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(158 80% 25%));
+    --gradient-soft: linear-gradient(180deg, hsl(145 35% 96%), hsl(100 25% 99%));
+    --gradient-hero: radial-gradient(at 0% 0%, hsl(160 84% 39% / 0.18), transparent 50%),
+                     radial-gradient(at 100% 0%, hsl(152 76% 60% / 0.15), transparent 55%);
+    --shadow-soft: 0 1px 2px hsl(158 30% 20% / 0.04), 0 8px 24px -8px hsl(158 50% 20% / 0.08);
+    --shadow-elevated: 0 2px 4px hsl(158 30% 20% / 0.05), 0 20px 40px -16px hsl(158 60% 20% / 0.18);
+    --shadow-glow: 0 10px 40px -10px hsl(160 84% 39% / 0.45);
+
+    --sidebar-background: 158 80% 11%;
+    --sidebar-foreground: 145 35% 92%;
+    --sidebar-primary: 160 84% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 158 60% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 158 50% 20%;
+    --sidebar-ring: 160 84% 45%;
+  }
+
+  .dark {
+    --background: 158 40% 6%;
+    --foreground: 145 35% 95%;
+    --card: 158 40% 9%;
+    --card-foreground: 145 35% 95%;
+    --popover: 158 40% 9%;
+    --popover-foreground: 145 35% 95%;
+    --primary: 160 84% 45%;
+    --primary-foreground: 158 80% 8%;
+    --secondary: 158 30% 14%;
+    --secondary-foreground: 145 35% 95%;
+    --muted: 158 30% 14%;
+    --muted-foreground: 145 15% 65%;
+    --accent: 158 40% 18%;
+    --accent-foreground: 145 35% 95%;
+    --border: 158 30% 18%;
+    --input: 158 30% 18%;
+    --ring: 160 84% 45%;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1,h2,h3,h4 { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; }
+  .font-urdu { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2; }
+}
+
+@layer utilities {
+  .bg-gradient-primary { background: var(--gradient-primary); }
+  .bg-gradient-soft { background: var(--gradient-soft); }
+  .bg-gradient-hero { background: var(--gradient-hero); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .text-balance { text-wrap: balance; }
+
+  /* Hide scrollbars on horizontal scroll containers */
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .scrollbar-none { scrollbar-width: none; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.5); }
+  100% { box-shadow: 0 0 0 14px hsl(var(--primary) / 0); }
+}
+.animate-pulse-ring { animation: pulse-ring 1.6s cubic-bezier(0.4,0,0.6,1) infinite; }
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up { animation: slide-up 0.4s ease-out both; }
