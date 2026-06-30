@@ -11,4 +11,4 @@ torch==2.1.0
 librosa==0.10.1
 groq==0.11.0          
 python-jose[cryptography]
-passlib[bcrypt]
+passlib[bcrypt]supabase
